@@ -111,6 +111,11 @@ button {
 
 /* task */
 
+.task-board {
+  max-height: 550px;
+  overflow: auto;
+}
+
 .task {
   display: flex;
   justify-content: space-between;
