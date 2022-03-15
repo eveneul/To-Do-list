@@ -32,11 +32,11 @@ function addTask () {
   }
 
   taskList.push(task);
-  console.log(taskList);
   taskInput.value = '';
   render();
 }
 
+// 할 일 분류하기(필터링하기)
 for(let i=0; i<tabs.length; i++) {
   tabs[i].addEventListener('click', function (e) {
     filter (e)
@@ -125,10 +125,12 @@ function deleteTask (id) {
   render();
 }
 
+// 각각의 할 일에게 고유한 ID 부여하기
 function randomIDGenerate () {
   return '__' + Math.random().toString(36).substr(2, 9);
 }
 
+// 매뉴 탭 스타일 이벤트
 function handleClick (e) {
   if (e.target.classList[1] == 'now-tab') {
     e.target.classList.remove('now-tab');
@@ -147,5 +149,13 @@ function init () {
 }
 
 init();
+
+// 엔터 이벤트 생성 (마우스로 클릭 안 해도 할 일이 생성되게끔)
+
+taskInput.addEventListener('keyup', function (e) {
+  if (e.keyCode == 13) {
+    addTask(e);
+  }
+})
 
 addbtn.addEventListener('click', addTask)
